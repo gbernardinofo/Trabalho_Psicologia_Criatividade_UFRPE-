@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processo Criativo: Da Ideia à Solução</title>
+    <style>
+        :root {
+            --primary: #8e44ad;
+            --secondary: #9b59b6;
+            --accent: #f39c12;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --success: #27ae60;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid var(--primary);
+        }
+        header h1 { margin: 0 0 10px 0; color: var(--accent); }
+        header p { margin: 0; font-size: 0.9em; opacity: 0.9; }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section-title {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+        }
+        
+        .content-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        /* Grid for 20 ideas */
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .idea-card {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            border-left: 4px solid var(--secondary);
+        }
+        .idea-chosen {
+            background: #fff3e0;
+            border-left: 4px solid var(--accent);
+            font-weight: bold;
+        }
+
+        /* App Prototype Styles */
+        .prototype-container {
+            background: #fff;
+            border: 2px solid var(--dark);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .proto-header {
+            text-align: center;
+            border-bottom: 2px solid var(--light);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+        }
+        .proto-header h3 { margin: 0; color: var(--primary); }
+        .input-group { display: flex; gap: 10px; margin-bottom: 15px; }
+        .input-group input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .input-group button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .input-group button:hover { background: var(--secondary); }
+        .quest-list { list-style: none; padding: 0; }
+        .quest-item {
+            background: var(--light);
+            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .quest-item.completed { opacity: 0.6; text-decoration: line-through; background: #d5eedd; }
+        .xp-bar-container {
+            width: 100%;
+            background: #ddd;
+            border-radius: 10px;
+            height: 15px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        .xp-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            transition: width 0.5s;
+        }
+
+        /* Util Classes */
+        .btn-download {
+            background-color: var(--accent);
+            color: var(--dark);
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .btn-download:hover { opacity: 0.9; }
+        .highlight { font-weight: bold; color: var(--primary); }
+        
+        .diary-entry {
+            border-left: 4px solid var(--secondary);
+            padding-left: 15px;
+            margin-bottom: 15px;
+            background: #f9f4fb;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Criatividade: Desconstruindo o Processo Criativo</h1>
+        <p>Produto Digital Autoral - Do Pensamento Divergente ao Convergente</p>
+        <p><strong>Disciplina:</strong> 05317 - PSICOLOGIA I - T10 (UFRPE)</p>
+        <p><strong>Aluno:</strong> Guilherme Bernardino Fernandes de Oliveira</p>
+        <button class="btn-download" onclick="downloadHTML()">📥 Baixar este arquivo HTML</button>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="section-title">1. O Que É Criatividade? &amp; Mitos</h2>
+        <div class="content-box">
+            <h3>A Visão da Psicologia</h3>
+            <p>Criatividade não é um dom místico ou uma explosão súbita de "inspiração" destinada apenas a artistas. Para a Psicologia, a criatividade é uma habilidade cognitiva complexa focada na <strong>resolução de problemas</strong> de forma adaptativa. É a capacidade de gerar produtos ou ideias que sejam simultaneamente novos (originais) e apropriados (úteis).</p>
+            <p>Os processos criativos envolvem:</p>
+            <ul>
+                <li><span class="highlight">Originalidade:</span> Capacidade de produzir ideias raras ou incomuns.</li>
+                <li><span class="highlight">Flexibilidade:</span> Habilidade de mudar de perspectiva e abordar o problema por diversos ângulos.</li>
+                <li><span class="highlight">Fluência de ideias:</span> Capacidade de gerar um grande número de alternativas em pouco tempo.</li>
+                <li><span class="highlight">Elaboração:</span> A capacidade de detalhar, refinar e executar uma ideia inicial.</li>
+            </ul>
+
+            <h3>Desconstruindo Mitos</h3>
+            <p><strong>Mito 1: "Criatividade é um dom (nasce-se criativo)."</strong><br>
+            A neurociência e a psicologia cognitiva mostram que a criatividade é fruto de plasticidade neural, repertório e prática. Todos possuímos redes de modo padrão (associativas) e redes executivas (foco) que, quando trabalham juntas, geram soluções criativas. Não é genética pura, é treino e ambiente.</p>
+            <p><strong>Mito 2: "Criatividade pertence principalmente às artes."</strong><br>
+            Na Computação, escrever um algoritmo eficiente que economiza memória, refatorar um código espaguete de forma elegante ou criar uma nova estrutura de banco de dados é um ato profundamente criativo. A criatividade manifesta-se em qualquer domínio onde haja um problema a ser resolvido.</p>
+        </div>
+
+        <h2 class="section-title">2. O Desafio das 20 Soluções (Mapa de Ideias)</h2>
+        <div class="content-box">
+            <p><strong>Problema Escolhido:</strong> A sobrecarga cognitiva e a dificuldade de gerenciamento de prazos (procrastinação) entre estudantes universitários de Computação.</p>
+            
+            <h4>Fase do Pensamento Divergente (Produção sem julgamento):</h4>
+            <div class="ideas-grid">
+                <div class="idea-card">1. Agenda física tradicional</div>
+                <div class="idea-card">2. App de calendário padrão</div>
+                <div class="idea-card">3. Alarme que só desliga se resolver equação</div>
+                <div class="idea-card">4. Bloqueador de redes sociais rígido</div>
+                <div class="idea-card">5. Grupo de estudos via Discord</div>
+                <div class="idea-card">6. Multa em dinheiro se perder prazo</div>
+                <div class="idea-card">7. Pet virtual que morre se você procrastinar</div>
+                <div class="idea-card">8. Óculos VR para focar no ambiente de estudo</div>
+                <div class="idea-card">9. IA que lê o SIGAA e cria calendário</div>
+                <div class="idea-card">10. Pulseira que dá choque leve (condicionamento)</div>
+                <div class="idea-card">11. Sistema de recompensas com doces (físico)</div>
+                <div class="idea-card">12. Estudar gamificado com ranking da turma</div>
+                <div class="idea-card">13. Pomodoro sincronizado com amigos</div>
+                <div class="idea-card">14. Tatuagem temporária com prazos</div>
+                <div class="idea-card idea-chosen">15. "QuestLog": App RPG que quebra tarefas grandes em micro-missões usando IA</div>
+                <div class="idea-card">16. Contratar um assistente humano</div>
+                <div class="idea-card">17. Mensagens subliminares no papel de parede</div>
+                <div class="idea-card">18. Fazer pacto público nas redes sociais</div>
+                <div class="idea-card">19. Tela E-ink exclusiva para to-do list</div>
+                <div class="idea-card">20. App que pede comida automaticamente ao terminar</div>
+            </div>
+
+            <h4 style="margin-top: 20px;">Organização e Categorização:</h4>
+            <ul>
+                <li><strong>Convencionais:</strong> Ideias 1, 2, 4, 5.</li>
+                <li><strong>Extremas/Bizarras (Originalidade pura):</strong> Ideias 6, 10, 14, 17.</li>
+                <li><strong>Combinadas:</strong> Ideia 15 (Mistura To-do list + IA de processamento de linguagem + Mecânicas de RPG).</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">3. Do Divergente ao Convergente &amp; O Protótipo</h2>
+        <div class="content-box">
+            <p><strong>Pensamento Convergente:</strong> Após a expansão (fluência), precisei avaliar a viabilidade técnica e a aceitação psicológica. Ideias com punição (choque, perder dinheiro) geram ansiedade e evitação. Ideias convencionais não engajam. Optei pela <strong>Ideia 15 (QuestLog)</strong>. Criar significa gerar <em>(divergente)</em>, mas também selecionar, refinar e viabilizar <em>(convergente)</em>.</p>
+            
+            <p>Abaixo, um <strong>Protótipo Funcional Interativo</strong> simulando o funcionamento do <em>QuestLog</em>. Experimente inserir uma tarefa universitária genérica (ex: "Fazer trabalho de Psicologia") para ver como a "IA" fragmenta o problema e gamifica o processo.</p>
+
+            <div class="prototype-container">
+                <div class="proto-header">
+                    <h3>🛡️ QuestLog: Estudante RPG</h3>
+                    <p style="font-size:0.8em; margin:0;">Nível Atual: 1 | <span id="xp-text">0/100 XP</span></p>
+                    <div class="xp-bar-container"><div class="xp-bar" id="xp-bar"></div></div>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" id="taskInput" placeholder="Digite uma grande tarefa (Ex: Projeto Final)">
+                    <button onclick="generateQuests()">Quebrar Tarefa</button>
+                </div>
+
+                <ul class="quest-list" id="questList">
+                    <!-- Quests appear here -->
+                    <li style="text-align: center; color: #7f8c8d; font-size: 0.9em;">Aguardando uma missão para dividir...</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">4. Diário do Processo Criativo &amp; Autoanálise</h2>
+        <div class="content-box">
+            <h3>Diário de Construção</h3>
+            <div class="diary-entry">
+                <strong>De onde surgiu a ideia?</strong> A primeira ideia (senso comum) era apenas fazer uma "agenda com alarme". Fui rejeitando isso porque já existem milhões. <br>
+                <strong>Bloqueio:</strong> Em um momento, achei que não teria 20 ideias. O que ajudou foi forçar o pensamento absurdo (tatuagem, choque). Isso "destravou" a mente para associar conceitos sem medo de errar.<br>
+                <strong>O papel da Computação:</strong> Meu conhecimento prévio de APIs de IA (como ChatGPT) permitiu imaginar a solução final, onde a IA faria o trabalho pesado de dividir a tarefa (reduzindo a carga cognitiva inicial do aluno). A solução final é muito superior e diferente da primeira ideia básica.
+            </div>
+
+            <h3>Investigando a Própria Criatividade</h3>
+            <ul>
+                <li>A <strong>Fluência</strong> ocorreu quando preenchi a lista de 20 ideias.</li>
+                <li>A <strong>Flexibilidade</strong> apareceu ao transitar entre soluções tecnológicas, sociais (pactos, grupos) e comportamentais (punição/recompensa).</li>
+                <li>A <strong>Originalidade</strong> esteve na mistura inusitada (RPG + Prazos + IA).</li>
+                <li>A <strong>Elaboração</strong> aconteceu durante a codificação do protótipo interativo acima (HTML/JS), transformando o conceito abstrato num layout tangível.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">5. Criatividade Humana × Inteligência Artificial &amp; Reflexão Final</h2>
+        <div class="content-box">
+            <h3>A IA pode ser criativa da mesma forma que um humano?</h3>
+            <p><strong>Não.</strong> A Inteligência Artificial (como LLMs ou geradores de imagem) possui altíssima <em>fluência</em> e capacidade combinatória (sintaxe e estatística), mas carece de <strong>intencionalidade, emoção e compreensão contextual (semântica)</strong>. Quando usei meus conhecimentos para projetar o <em>QuestLog</em>, considerei o cansaço real do estudante, a ansiedade de um prazo e a satisfação de "ganhar XP". A IA gera respostas baseadas em probabilidades treinadas; o humano cria para resolver uma "dor" sentida no mundo real, dotando a criação de propósito. A IA é uma ferramenta formidável de expansão divergente, mas a seleção convergente e o sentido ético/emocional são estritamente humanos.</p>
+
+            <h3>Reflexão Final (Resposta à provocação)</h3>
+            <p><strong>Depois de observar o processo, podemos afirmar que criatividade é simplesmente "ter uma boa ideia"?</strong></p>
+            <p>De forma alguma. Ter uma "boa ideia" é apenas uma pequena fração do processo (a iluminação/insight inicial). Como evidenciado nesta atividade, criatividade exige a etapa de incubação, o rigor do <em>pensamento convergente</em> para descartar o inviável, e um intenso esforço de <em>elaboração</em> (programar o protótipo, organizar o site). A criatividade só se completa quando a ideia abstrata se materializa e resolve um problema no mundo real.</p>
+            
+            <h3>Referências</h3>
+            <p>1. STERNBERG, R. J. Psicologia Cognitiva. 5. ed. Cengage Learning, 2010.<br>
+               2. DE MASI, D. O Ócio Criativo. Rio de Janeiro: Sextante, 2000.<br>
+               3. GAZZANIGA, M. S.; HEATHERTON, T. F. Ciência Psicológica. Porto Alegre: Artmed, 2018.</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Interactive Prototype Logic
+        let currentXP = 0;
+
+        function generateQuests() {
+            const input = document.getElementById('taskInput').value;
+            const list = document.getElementById('questList');
+            
+            if(!input) {
+                alert("Por favor, insira uma tarefa primeiro!");
+                return;
+            }
+
+            // Simulate AI breaking down the task
+            list.innerHTML = '';
+            const subTasks = [
+                `[Pesquisa] Levantar referências para: ${input}`,
+                `[Ação] Escrever o primeiro rascunho de ${input}`,
+                `[Revisão] Finalizar e polir a entrega`
+            ];
+
+            subTasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.className = 'quest-item';
+                li.innerHTML = `
+                    <input type="checkbox" id="quest${index}" onclick="completeQuest(this)">
+                    <label for="quest${index}">${task} <strong>(+33 XP)</strong></label>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        function completeQuest(checkbox) {
+            const item = checkbox.parentElement;
+            if(checkbox.checked) {
+                item.classList.add('completed');
+                addXP(33);
+            } else {
+                item.classList.remove('completed');
+                addXP(-33);
+            }
+        }
+
+        function addXP(amount) {
+            currentXP += amount;
+            if(currentXP > 99) currentXP = 100;
+            if(currentXP < 0) currentXP = 0;
+            
+            document.getElementById('xp-text').innerText = `${currentXP}/100 XP`;
+            document.getElementById('xp-bar').style.width = `${currentXP}%`;
+            
+            if(currentXP === 100) {
+                setTimeout(() => alert("🎉 LEVEL UP! Você concluiu a grande tarefa dividindo-a em pequenas etapas!"), 300);
+            }
+        }
+
+        // Função para baixar o próprio arquivo HTML
+        function downloadHTML() {
+            const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Trabalho_Psicologia_Criatividade_UFRPE.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+
+</body></html>
